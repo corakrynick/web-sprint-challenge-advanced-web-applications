@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { axiosWithAuth } from './axiosWithAuth'
 
 const initialColor = {
   color: "",
@@ -10,6 +10,15 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+
+  useEffect(() => {
+    axiosWithAuth()
+    .get('/api/colors')
+    .then(res => {
+      console.log(res)
+    })
+    .catch((err) => console.log(err))
+  }, [])
 
   const editColor = color => {
     setEditing(true);

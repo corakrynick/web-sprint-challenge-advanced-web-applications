@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import PrivateRoute from './components/PrivateRoute'
 import "./styles.scss";
 import ColorList from "./components/ColorList";
+import BubblePage from "./components/BubblePage";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           display BubblePage when you're authenticated 
         */}
         <PrivateRoute path='/colors'>
-          <ColorList />
+          <BubblePage />
         </PrivateRoute>
       </div>
     </Router>

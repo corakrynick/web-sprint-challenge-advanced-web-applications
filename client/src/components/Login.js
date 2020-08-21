@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axiosWithAuth from './axiosWithAuth'
+import {axiosWithAuth} from './axiosWithAuth'
 import { useHistory} from 'react-router-dom'
 
 
@@ -13,8 +13,8 @@ export default function Login(props) {
     axiosWithAuth()
       .post('/api/login', form)
       .then(res => {
-        localStorage.getItem(res.data.payload)
-        history.push('/login')
+        localStorage.setItem('token', res.data.payload)
+        history.push('/colors')
       })
       .catch((err) => console.log(err))
   }
